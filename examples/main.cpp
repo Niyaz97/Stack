@@ -2,17 +2,15 @@
 
 int main() {
 
-    stack<int> st;
-    std::cout << st.count() << std::endl;
-
-    st.push(5);
-    st.push(6);
-    st.push(7);
-
-    std::cout << st.count() << std::endl;
+    stack<size_t> st;
 
     try {
-        std::cout << st.pop() << std::endl;
+        st.push(1);
+        st.push(2);
+        st.push(3);
+    
+        std::cout << "Size of stack "<< st.count() << std::endl;
+
         std::cout << st.pop() << std::endl;
         std::cout << st.pop() << std::endl;
         std::cout << st.pop() << std::endl;
@@ -21,7 +19,7 @@ int main() {
         std::cout << e.what() << std::endl;
     }
 
-    std::cout << st.count() << std::endl;
+    std::cout << "Size of stack "<< st.count() << std::endl;
 
     return 0;
 }
