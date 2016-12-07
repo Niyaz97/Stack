@@ -19,7 +19,7 @@ int main() {
         std::cout << e.what() << std::endl;
     }
 
-    std::cout << "Size of stack "<< st.count() << std::endl;
+    std::cout << "Size of stack after popping elements "<< st.count() << std::endl;
 
     return 0;
 }
