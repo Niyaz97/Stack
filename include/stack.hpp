@@ -2,7 +2,6 @@
 #define STACK_STACK_HPP
 
 #include <iostream>
-#include <exception>
 
 template <typename T>
 class stack {
