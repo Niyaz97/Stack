@@ -59,14 +59,14 @@ auto stack<T>::push(T const& value) -> void {
 
 template <typename T>
 auto stack<T>::top() const -> const T& {
-    if(count_==0)
+    if(empty())
         throw std::logic_error("stack is empty!");
     return array_[count_-1];
 }
 
 template <typename T>
 auto stack<T>::pop() -> void {
-    if(count_==0)
+    if(empty())
         throw std::logic_error("stack is empty!");
 
     else --count_;
