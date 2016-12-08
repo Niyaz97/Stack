@@ -10,7 +10,7 @@ option(BUILD_TESTS "Build tests for stack" ON)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/)
 
-add_library(${PROJECT_NAME} STATIC ${CMAKE_CURRENT_SOURCE_DIR}/sources/stack.cpp)
+add_library(${PROJECT_NAME} STATIC ${CMAKE_CURRENT_SOURCE_DIR}/sources/)
 
 add_executable(Examples ${CMAKE_CURRENT_SOURCE_DIR}/examples/main.cpp)
 
