@@ -6,12 +6,11 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-option(BUILD_SHARED_LIBS "Build shared instead of static library" OFF)
 option(BUILD_TESTS "Build tests for stack" ON)
 
-add_library(${PROJECT_NAME} STATIC ${CMAKE_CURRENT_SOURCE_DIR}/sources/stack.cpp)
-
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/)
+
+add_library(${PROJECT_NAME} STATIC ${CMAKE_CURRENT_SOURCE_DIR}/sources/stack.cpp)
 
 add_executable(Examples ${CMAKE_CURRENT_SOURCE_DIR}/examples/main.cpp)
 
