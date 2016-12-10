@@ -11,7 +11,7 @@ public:
     ~stack(); /* noexcept */
 
     auto count() const noexcept -> size_t ;
-    auto push(T const& value) /* strong */ -> void;
+    auto push(T const& value) noexcept -> void;
     auto top() const /* strong */ -> const T&;
     auto pop() /* strong */ -> void;
 
@@ -44,7 +44,7 @@ auto stack<T>::empty() const noexcept -> bool {
 }
 
 template <typename T>
-auto stack<T>::push(T const& value) /* strong */ -> void {
+auto stack<T>::push(T const& value) noexcept -> void {
     if (count_ == array_size_) {
         size_t size = array_size_ * 2 + (array_size_ == 0);
         T * n_array = new T[size];
