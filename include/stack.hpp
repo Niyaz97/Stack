@@ -56,18 +56,16 @@ auto stack<T>::push(T const& value) noexcept -> void {
             array_ = n_array;
             array_size_ = size;
         }
-        catch(std::logic_error& e){
+        catch(...){
             delete[] n_array;
-            std::cout << e.what() << std::endl;
+            return;
         }
     }
     try {
         ++count_;
         array_[count_ - 1] = value;
     }
-    catch(...) {
-        throw;
-    }
+    catch(...) {}
 }
 
 template <typename T>
