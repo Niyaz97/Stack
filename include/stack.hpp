@@ -12,7 +12,7 @@ public:
 
     auto count() const noexcept -> size_t ;
     auto push(T const& value) noexcept -> void;
-    auto top() const /* strong */ -> const T&;
+    auto top() const /* strong */ -> T;
     auto pop() /* strong */ -> void;
 
     auto empty() const noexcept -> bool;
@@ -69,7 +69,7 @@ auto stack<T>::push(T const& value) noexcept -> void {
 }
 
 template <typename T>
-auto stack<T>::top() const /* strong */ -> const T& {
+auto stack<T>::top() const /* strong */ -> T {
     if(empty())
         throw std::logic_error("Error! Stack is empty!");
     return array_[count_-1];
