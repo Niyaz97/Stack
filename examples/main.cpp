@@ -4,11 +4,11 @@ int main() {
 
     stack<size_t> st;
 
-    try {
-        st.push(1);
-        st.push(2);
-        st.push(3);
+    st.push(1);
+    st.push(2);
+    st.push(3);
 
+    try {
         std::cout << "Size of stack " << st.count() << std::endl;
         std::cout << st.top() << std::endl;
         st.pop();
@@ -16,7 +16,6 @@ int main() {
         st.pop();
         std::cout << st.top() << std::endl;
         st.pop();
-
     }
     catch (std::logic_error& e) {
         std::cout << e.what() << std::endl;
