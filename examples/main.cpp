@@ -18,7 +18,7 @@ int main() {
         st.pop();
     }
     catch (std::logic_error& e) {
-        std::cout << e.what() << std::endl;
+        std::cerr << e.what() << std::endl;
     }
 
     std::cout << "Size of stack after popping elements " << st.count() << std::endl;
