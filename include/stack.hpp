@@ -11,7 +11,7 @@ public:
     ~stack();
 
     auto count() const noexcept -> size_t ;
-    auto push(T const& value) noexcept -> void;
+    auto push(T const& value) /* strong */ -> void;
     auto top() const /* strong */ -> T;
     auto pop() /* strong */ -> void;
 
@@ -44,28 +44,41 @@ auto stack<T>::empty() const noexcept -> bool {
 }
 
 template <typename T>
-auto stack<T>::push(T const& value) noexcept -> void {
+auto stack<T>::push(T const& value) /* strong */ -> void {
+
+    bool flag = false;
+    T* s_array = array_;
+    size_t size;
 
     if (count_ == array_size_) {
-        size_t size = array_size_ * 2 + (array_size_ == 0);
-        T* n_array;
+        size = array_size_ * 2 + (array_size_ == 0);
+        T* n_array= nullptr;
         try {
             n_array = new T[size];
             std::copy(array_, array_ + array_size_, n_array);
-            delete[] array_;
-            array_ = n_array;
-            array_size_ = size;
         }
         catch(...){
             delete[] n_array;
-            return;
+            throw;
         }
+        flag = true;
+        array_ = n_array;
     }
+
     try {
         ++count_;
         array_[count_ - 1] = value;
     }
-    catch(...) {}
+    catch(...) {
+        if(flag){
+            delete[] array_;
+            array_ = s_array;
+        }
+        throw;
+    }
+    if(count_ == array_size_) array_size_ = size;
+    if(flag) delete[] s_array;
+    return;
 }
 
 template <typename T>
