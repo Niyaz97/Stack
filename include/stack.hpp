@@ -14,7 +14,6 @@ protected:
     auto operator =(allocator const&) -> allocator& = delete;
 
     auto allocate(const size_t) -> void;
-    auto deallocate() -> void;
     T * ptr_;
     size_t size_;
     size_t count_;
@@ -58,12 +57,6 @@ auto allocator<T>::allocate(const size_t st_size) -> void {
     swap(temp);
 }
 
-template <typename T>
-auto allocator<T>::deallocate() -> void {
-    allocator<T> temp(size_);
-    std::copy(ptr_, ptr_ + count_, temp.ptr_);
-    swap(temp);
-}
 
 template <typename T>
 class stack : private allocator<T> {
