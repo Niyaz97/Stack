@@ -21,19 +21,3 @@ SCENARIO("popping an element => stack returns the last one")
         }
     }
 }
-
-SCENARIO("stack is empty => top method throws an exception")
-{
-    GIVEN("empty stack")
-    {
-        stack<size_t> st;
-
-        WHEN("trying to pop an element")
-        {
-            THEN("an exception must be thrown")
-            {
-                REQUIRE_THROWS_AS(st.top(), std::logic_error &);
-            }
-        }
-    }
-}
