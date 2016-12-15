@@ -21,19 +21,3 @@ SCENARIO("popping an element from stack => count of elements decreases by one")
         }
     }
 }
-
-SCENARIO("stack is empty => pop method throws an exception")
-{
-    GIVEN("empty stack")
-    {
-        stack<size_t> st;
-
-        WHEN("trying to pop an element")
-        {
-            THEN("an exception must be thrown")
-            {
-                REQUIRE_THROWS_AS(st.pop(), std::logic_error &);
-            }
-        }
-    }
-}
