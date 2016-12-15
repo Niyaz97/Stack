@@ -1,3 +1,3 @@
 # Stack
 
-[![Build Status](https://travis-ci.org/Niyaz97/Stack.svg?branch=master)](https://travis-ci.org/Niyaz97/Stack)
+[![Build Status](https://travis-ci.org/Niyaz97/Stack.svg?branch=stage_3)](https://travis-ci.org/Niyaz97/Stack)
