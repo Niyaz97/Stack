@@ -15,12 +15,17 @@ public:
 
     auto resize() -> void;
     auto allocate(const size_t) -> void;
+
     auto swap(allocator& other) -> void;
 
     auto construct(T* ptr, T const & value) -> void;
     auto destroy(T* ptr) noexcept -> void;
+
+    auto destroy(T* first, T* last) noexcept -> void;
+
     auto get() noexcept -> T*;
     auto get() const noexcept -> T const*;
+
     auto count() const noexcept -> size_t;
     auto full() const noexcept -> bool;
     auto empty() const noexcept -> bool;
@@ -50,7 +55,7 @@ allocator<T>::allocator(allocator const &other) {
 template <typename T>
 allocator<T>::~allocator() {
     if(count_ > 0) {
-        destroy(ptr_);
+        destroy(ptr_, ptr_ + count_);
     }
     ::operator delete(ptr_);
 }
@@ -72,6 +77,13 @@ template <typename T>
 auto allocator<T>::destroy(T *ptr) noexcept -> void {
     ptr->~T();
     --count_;
+}
+
+template <typename T>
+auto allocator<T>::destroy(T* first, T* last) noexcept -> void{
+    for(; first!=last; ++first){
+        destroy(first);
+    }
 }
 
 template <typename T>
@@ -125,5 +137,6 @@ auto allocator<T>::allocate(const size_t st_size) -> void {
     }
     swap(temp);
 }
+
 
 #endif
